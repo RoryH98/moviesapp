@@ -9,6 +9,27 @@
   </head>
 
   <body>
+  <header class ="navbar navbar-fixed-top navbar-inverse">
+	<div class "nav"
+		<nav>
+			<ul class = "nav navbar-nav navbar-right">
+				<% if !signed_in? %>
+					<li><%= link_to "Sign In", login_path %></li>
+				<% else %>
+					<li> Signed In As: <%= @current_user.name%></li>
+					<li><%= link_to "Sign Out", logout_path%></li>
+				<% end %>
+				<li><%= link_to "About", '#'%></li>
+			</ul>
+		</nav>
+	</div>
+	</header>
+	<% flash.each do |key,value| %>
+		<div class="flash <%=key%>">
+			<%=value%>
+		</div>
+	<%end%>
+  
     <%= yield %>
   </body>
 </html>
